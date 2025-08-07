@@ -1,0 +1,642 @@
+[debug] [2025-08-07T02:24:47.316Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T02:24:47.317Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T02:24:47.318Z] CLI Version:   14.12.0
+[debug] [2025-08-07T02:24:47.318Z] Platform:      darwin
+[debug] [2025-08-07T02:24:47.318Z] Node Version:  v23.7.0
+[debug] [2025-08-07T02:24:47.318Z] Time:          Wed Aug 06 2025 19:24:47 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T02:24:47.318Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T02:24:47.394Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T02:24:47.394Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T02:24:47.417Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T02:24:47.417Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T02:24:47.420Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T02:24:47.726Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:24:47.727Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:24:47.727Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-08-07T02:24:47.729Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T02:24:47.731Z] Checked if tokens are valid: true, expires at: 1754534591890
+[debug] [2025-08-07T02:24:47.731Z] Checked if tokens are valid: true, expires at: 1754534591890
+[debug] [2025-08-07T02:24:47.732Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T02:24:48.153Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T02:24:48.153Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T02:24:48.153Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T02:24:48.154Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T02:24:48.154Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T02:24:48.154Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T02:24:48.154Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to database-debug.log"}}
+[debug] [2025-08-07T02:24:48.550Z] 19:24:48.549 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:48.549 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T02:24:48.609Z] 19:24:48.609 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:48.609 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T02:24:48.765Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T02:24:48.765Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T02:24:48.886Z] 19:24:48.886 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 46ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:48.886 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 46ms, init: 0ms\n"}}
+[debug] [2025-08-07T02:24:48.912Z] 19:24:48.911 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:48.911 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T02:24:48.922Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T02:24:48.922Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T02:24:48.924Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T02:24:54.252Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T02:24:54.253Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T02:24:54.253Z] CLI Version:   14.12.0
+[debug] [2025-08-07T02:24:54.253Z] Platform:      darwin
+[debug] [2025-08-07T02:24:54.253Z] Node Version:  v23.7.0
+[debug] [2025-08-07T02:24:54.253Z] Time:          Wed Aug 06 2025 19:24:54 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T02:24:54.253Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T02:24:54.328Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T02:24:54.329Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T02:24:54.350Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T02:24:54.350Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T02:24:54.353Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T02:24:54.623Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:24:54.623Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:24:54.623Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T02:24:54.626Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T02:24:54.629Z] Checked if tokens are valid: true, expires at: 1754534591890
+[debug] [2025-08-07T02:24:54.630Z] Checked if tokens are valid: true, expires at: 1754534591890
+[debug] [2025-08-07T02:24:54.630Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T02:24:54.846Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T02:24:54.846Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T02:24:54.846Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T02:24:54.849Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T02:24:54.849Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T02:24:54.849Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T02:24:54.849Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T02:24:55.230Z] 19:24:55.229 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:55.229 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T02:24:55.279Z] 19:24:55.279 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:55.279 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T02:24:55.460Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T02:24:55.461Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T02:24:55.576Z] 19:24:55.576 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 42ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:55.576 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 42ms, init: 0ms\n"}}
+[debug] [2025-08-07T02:24:55.597Z] 19:24:55.597 [NamespaceSystem-blocking-namespace-operation-dispatcher-7] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"19:24:55.597 [NamespaceSystem-blocking-namespace-operation-dispatcher-7] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T02:24:55.612Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T02:24:55.612Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T02:24:55.614Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T02:28:56.501Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T02:28:56.502Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T02:28:56.502Z] CLI Version:   14.12.0
+[debug] [2025-08-07T02:28:56.502Z] Platform:      darwin
+[debug] [2025-08-07T02:28:56.502Z] Node Version:  v23.7.0
+[debug] [2025-08-07T02:28:56.503Z] Time:          Wed Aug 06 2025 19:28:56 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T02:28:56.503Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T02:28:56.587Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T02:28:56.588Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T02:28:56.615Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T02:28:56.615Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T02:28:56.618Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T02:28:56.892Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:28:56.892Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:28:56.892Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T02:28:56.894Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T02:28:56.897Z] Checked if tokens are valid: false, expires at: 1754534591890
+[debug] [2025-08-07T02:28:56.897Z] Checked if tokens are valid: false, expires at: 1754534591890
+[debug] [2025-08-07T02:28:56.897Z] > refreshing access token with scopes: []
+[debug] [2025-08-07T02:28:56.897Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-08-07T02:28:56.897Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T02:28:57.000Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-08-07T02:28:57.000Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T02:28:57.010Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T02:28:57.343Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T02:28:57.343Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T02:28:57.343Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T02:28:57.345Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T02:28:57.345Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T02:28:57.345Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T02:28:57.345Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T02:28:57.849Z] 19:28:57.848 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"19:28:57.848 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T02:28:57.917Z] 19:28:57.917 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"19:28:57.917 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T02:28:57.953Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T02:28:57.953Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T02:28:58.069Z] 19:28:58.069 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 47ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"19:28:58.069 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 47ms, init: 0ms\n"}}
+[debug] [2025-08-07T02:28:58.091Z] 19:28:58.091 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"19:28:58.091 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T02:28:58.108Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T02:28:58.108Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T02:28:58.110Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T02:31:30.345Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T02:31:30.347Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T02:31:30.347Z] CLI Version:   14.12.0
+[debug] [2025-08-07T02:31:30.347Z] Platform:      darwin
+[debug] [2025-08-07T02:31:30.347Z] Node Version:  v23.7.0
+[debug] [2025-08-07T02:31:30.347Z] Time:          Wed Aug 06 2025 19:31:30 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T02:31:30.347Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T02:31:30.425Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T02:31:30.425Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T02:31:30.451Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T02:31:30.451Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T02:31:30.454Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T02:31:30.727Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:31:30.727Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T02:31:30.727Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T02:31:30.729Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T02:31:30.732Z] Checked if tokens are valid: true, expires at: 1754537336000
+[debug] [2025-08-07T02:31:30.732Z] Checked if tokens are valid: true, expires at: 1754537336000
+[debug] [2025-08-07T02:31:30.733Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T02:31:31.050Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T02:31:31.051Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T02:31:31.051Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T02:31:31.054Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T02:31:31.054Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T02:31:31.054Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T02:31:31.055Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T02:31:31.437Z] 19:31:31.437 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"19:31:31.437 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T02:31:31.493Z] 19:31:31.492 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"19:31:31.492 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T02:31:31.668Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T02:31:31.668Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T02:31:31.791Z] 19:31:31.791 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 47ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"19:31:31.791 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 47ms, init: 0ms\n"}}
+[debug] [2025-08-07T02:31:31.819Z] 19:31:31.819 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"19:31:31.819 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T02:31:31.830Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T02:31:31.830Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T02:31:31.832Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T06:50:00.524Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T06:50:00.525Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T06:50:00.525Z] CLI Version:   14.12.0
+[debug] [2025-08-07T06:50:00.525Z] Platform:      darwin
+[debug] [2025-08-07T06:50:00.525Z] Node Version:  v23.7.0
+[debug] [2025-08-07T06:50:00.526Z] Time:          Wed Aug 06 2025 23:50:00 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T06:50:00.526Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T06:50:00.607Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T06:50:00.607Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T06:50:00.633Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T06:50:00.633Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T06:50:00.636Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T06:50:00.927Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T06:50:00.927Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T06:50:00.927Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T06:50:00.929Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T06:50:00.933Z] Checked if tokens are valid: false, expires at: 1754537336000
+[debug] [2025-08-07T06:50:00.934Z] Checked if tokens are valid: false, expires at: 1754537336000
+[debug] [2025-08-07T06:50:00.934Z] > refreshing access token with scopes: []
+[debug] [2025-08-07T06:50:00.934Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-08-07T06:50:00.934Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T06:50:01.028Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-08-07T06:50:01.028Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T06:50:01.038Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T06:50:01.382Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T06:50:01.382Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T06:50:01.383Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T06:50:01.386Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T06:50:01.386Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T06:50:01.386Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T06:50:01.386Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T06:50:01.789Z] 23:50:01.788 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"23:50:01.788 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T06:50:01.847Z] 23:50:01.847 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"23:50:01.847 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T06:50:01.996Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T06:50:01.996Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T06:50:02.112Z] 23:50:02.111 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 46ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"23:50:02.111 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 46ms, init: 0ms\n"}}
+[debug] [2025-08-07T06:50:02.132Z] 23:50:02.132 [NamespaceSystem-blocking-namespace-operation-dispatcher-8] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"23:50:02.132 [NamespaceSystem-blocking-namespace-operation-dispatcher-8] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T06:50:02.148Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T06:50:02.148Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T06:50:02.150Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T07:01:25.808Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T07:01:25.809Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T07:01:25.809Z] CLI Version:   14.12.0
+[debug] [2025-08-07T07:01:25.809Z] Platform:      darwin
+[debug] [2025-08-07T07:01:25.810Z] Node Version:  v23.7.0
+[debug] [2025-08-07T07:01:25.810Z] Time:          Thu Aug 07 2025 00:01:25 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T07:01:25.810Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T07:01:25.894Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T07:01:25.894Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T07:01:25.919Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T07:01:25.920Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T07:01:25.923Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T07:01:26.216Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T07:01:26.216Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T07:01:26.216Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T07:01:26.219Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T07:01:26.222Z] Checked if tokens are valid: true, expires at: 1754553000029
+[debug] [2025-08-07T07:01:26.222Z] Checked if tokens are valid: true, expires at: 1754553000029
+[debug] [2025-08-07T07:01:26.222Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T07:01:26.565Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T07:01:26.565Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T07:01:26.565Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T07:01:26.566Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T07:01:26.566Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T07:01:26.566Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T07:01:26.567Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T07:01:26.975Z] 00:01:26.975 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"00:01:26.975 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T07:01:27.033Z] 00:01:27.033 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"00:01:27.033 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T07:01:27.176Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T07:01:27.176Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T07:01:27.294Z] 00:01:27.293 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 46ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"00:01:27.293 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 46ms, init: 0ms\n"}}
+[debug] [2025-08-07T07:01:27.321Z] 00:01:27.321 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"00:01:27.321 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T07:01:27.332Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T07:01:27.332Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T07:01:27.334Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T07:15:26.717Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T07:15:26.718Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T07:15:26.718Z] CLI Version:   14.12.0
+[debug] [2025-08-07T07:15:26.718Z] Platform:      darwin
+[debug] [2025-08-07T07:15:26.718Z] Node Version:  v23.7.0
+[debug] [2025-08-07T07:15:26.719Z] Time:          Thu Aug 07 2025 00:15:26 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T07:15:26.719Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T07:15:26.798Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T07:15:26.798Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T07:15:26.824Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T07:15:26.824Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T07:15:26.827Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T07:15:27.089Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T07:15:27.089Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T07:15:27.089Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T07:15:27.091Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T07:15:27.094Z] Checked if tokens are valid: true, expires at: 1754553000029
+[debug] [2025-08-07T07:15:27.094Z] Checked if tokens are valid: true, expires at: 1754553000029
+[debug] [2025-08-07T07:15:27.094Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T07:15:27.349Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T07:15:27.349Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T07:15:27.349Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T07:15:27.352Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T07:15:27.353Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T07:15:27.353Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T07:15:27.353Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T07:15:27.742Z] 00:15:27.742 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"00:15:27.742 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T07:15:27.798Z] 00:15:27.798 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"00:15:27.798 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T07:15:27.967Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T07:15:27.967Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T07:15:28.077Z] 00:15:28.076 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 43ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"00:15:28.076 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 43ms, init: 0ms\n"}}
+[debug] [2025-08-07T07:15:28.100Z] 00:15:28.100 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"00:15:28.100 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T07:15:28.110Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T07:15:28.110Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T07:15:28.112Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T07:56:45.739Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T07:56:45.740Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T07:56:45.740Z] CLI Version:   14.12.0
+[debug] [2025-08-07T07:56:45.740Z] Platform:      darwin
+[debug] [2025-08-07T07:56:45.741Z] Node Version:  v23.7.0
+[debug] [2025-08-07T07:56:45.741Z] Time:          Thu Aug 07 2025 00:56:45 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T07:56:45.741Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T07:56:45.822Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T07:56:45.823Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T07:56:45.852Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T07:56:45.852Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T07:56:45.855Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T07:56:46.127Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T07:56:46.127Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T07:56:46.127Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T07:56:46.129Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T07:56:46.132Z] Checked if tokens are valid: false, expires at: 1754553000029
+[debug] [2025-08-07T07:56:46.132Z] Checked if tokens are valid: false, expires at: 1754553000029
+[debug] [2025-08-07T07:56:46.132Z] > refreshing access token with scopes: []
+[debug] [2025-08-07T07:56:46.133Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-08-07T07:56:46.133Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T07:56:46.238Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-08-07T07:56:46.239Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T07:56:46.255Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T07:56:46.595Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T07:56:46.595Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T07:56:46.596Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T07:56:46.599Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T07:56:46.599Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T07:56:46.599Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T07:56:46.599Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T07:56:47.039Z] 00:56:47.038 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"00:56:47.038 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T07:56:47.097Z] 00:56:47.097 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"00:56:47.097 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T07:56:47.209Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T07:56:47.209Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T07:56:47.321Z] 00:56:47.321 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 44ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"00:56:47.321 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 44ms, init: 0ms\n"}}
+[debug] [2025-08-07T07:56:47.348Z] 00:56:47.347 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"00:56:47.347 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T07:56:47.358Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T07:56:47.358Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T07:56:47.360Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T08:07:42.814Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T08:07:42.816Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T08:07:42.816Z] CLI Version:   14.12.0
+[debug] [2025-08-07T08:07:42.816Z] Platform:      darwin
+[debug] [2025-08-07T08:07:42.816Z] Node Version:  v23.7.0
+[debug] [2025-08-07T08:07:42.816Z] Time:          Thu Aug 07 2025 01:07:42 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T08:07:42.816Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T08:07:42.911Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T08:07:42.911Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T08:07:42.940Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T08:07:42.940Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T08:07:42.943Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T08:07:43.242Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T08:07:43.242Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T08:07:43.242Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T08:07:43.245Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T08:07:43.248Z] Checked if tokens are valid: true, expires at: 1754557005239
+[debug] [2025-08-07T08:07:43.248Z] Checked if tokens are valid: true, expires at: 1754557005239
+[debug] [2025-08-07T08:07:43.249Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T08:07:43.604Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T08:07:43.604Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T08:07:43.605Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T08:07:43.607Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T08:07:43.608Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T08:07:43.608Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T08:07:43.608Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T08:07:44.067Z] 01:07:44.066 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"01:07:44.066 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T08:07:44.141Z] 01:07:44.140 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"01:07:44.140 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T08:07:44.219Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T08:07:44.220Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T08:07:44.352Z] 01:07:44.352 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 54ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"01:07:44.352 [NamespaceSystem-akka.actor.default-dispatcher-8] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 54ms, init: 0ms\n"}}
+[debug] [2025-08-07T08:07:44.377Z] 01:07:44.377 [NamespaceSystem-blocking-namespace-operation-dispatcher-9] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"01:07:44.377 [NamespaceSystem-blocking-namespace-operation-dispatcher-9] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T08:07:44.394Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T08:07:44.394Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T08:07:44.396Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-08-07T08:21:08.729Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T08:21:08.730Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T08:21:08.730Z] CLI Version:   14.12.0
+[debug] [2025-08-07T08:21:08.731Z] Platform:      darwin
+[debug] [2025-08-07T08:21:08.731Z] Node Version:  v23.7.0
+[debug] [2025-08-07T08:21:08.731Z] Time:          Thu Aug 07 2025 01:21:08 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T08:21:08.731Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T08:21:08.810Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T08:21:08.810Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T08:21:08.834Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T08:21:08.834Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T08:21:08.837Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T08:21:09.147Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T08:21:09.147Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T08:21:09.147Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] ⚠  emulators: It seems that you are running multiple instances of the emulator suite for project nove-games. This may result in unexpected behavior. 
+[debug] [2025-08-07T08:21:09.150Z] [hub] writing locator at /var/folders/r0/8v0_350n2tl_t1556tldtqp00000gn/T/hub-nove-games.json
+[debug] [2025-08-07T08:21:09.153Z] Checked if tokens are valid: true, expires at: 1754557005239
+[debug] [2025-08-07T08:21:09.153Z] Checked if tokens are valid: true, expires at: 1754557005239
+[debug] [2025-08-07T08:21:09.154Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nove-games [none]
+[debug] [2025-08-07T08:21:09.504Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nove-games 200
+[debug] [2025-08-07T08:21:09.504Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nove-games {"projectId":"nove-games","projectNumber":"310285587945","displayName":"nove","name":"projects/nove-games","resources":{"hostingSite":"nove-games","realtimeDatabaseInstance":"nove-games-default-rtdb"},"state":"ACTIVE","etag":"1_55eb9620-02b7-4301-b54b-c99cda4ef7e4"}
+[debug] [2025-08-07T08:21:09.504Z] database rules config:  [{"instance":"nove-games-default-rtdb","rules":"/Users/bruno/Desktop/trunfo/trump-game/database.rules.json"}]
+[debug] [2025-08-07T08:21:09.506Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T08:21:09.506Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T08:21:09.506Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T08:21:09.506Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T08:21:09.893Z] 01:21:09.892 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"01:21:09.892 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T08:21:09.948Z] 01:21:09.948 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"01:21:09.948 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2025-08-07T08:21:10.118Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T08:21:10.118Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \".write\": true,\n        \"players\": {\n          \"$playerId\": {\n            \"hand\": {\n              \".read\": \"$playerId === auth.uid || auth.uid === null\",\n              \".write\": false\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T08:21:10.233Z] 01:21:10.233 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 42ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"01:21:10.233 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 42ms, init: 0ms\n"}}
+[debug] [2025-08-07T08:21:10.253Z] 01:21:10.253 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"01:21:10.253 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T08:21:10.268Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T08:21:10.268Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T08:21:10.270Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  database: Change detected, updating rules for nove-games-default-rtdb... {"metadata":{"emulator":{"name":"database"},"message":"Change detected, updating rules for nove-games-default-rtdb..."}}
+[debug] [2025-08-07T08:39:34.647Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=nove-games-default-rtdb
+[debug] [2025-08-07T08:39:34.647Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \n        \"players\": {\n          \"$playerId\": {\n            \"name\": {\n              \".write\": true\n            },\n            \"ready\": {\n              \".write\": true\n            },\n            \"currentCard\": {\n              \".write\": true,\n              \".validate\": \"newData.hasChildren(['suit', 'rank', 'value'])\"\n            },\n            \"hand\": {\n              \".write\": false\n            },\n            \"cardsPlayed\": {\n              \".write\": false\n            },\n            \"roundsWon\": {\n              \".write\": false\n            }\n          }\n        },\n        \n        \"status\": {\n          \".write\": \"newData.val() === 'waiting' || newData.val() === 'ready'\"\n        },\n        \n        \"trumpSuit\": {\n          \".write\": false\n        },\n        \n        \"currentRound\": {\n          \".write\": false\n        },\n        \n        \"roundTimer\": {\n          \".write\": false\n        },\n        \n        \"rounds\": {\n          \".write\": false\n        },\n        \n        \"bet\": {\n          \".write\": true\n        },\n        \n        \"createdAt\": {\n          \".write\": \"!data.exists()\"\n        },\n        \n        \"id\": {\n          \".write\": \"!data.exists()\"\n        },\n        \n        \"cheatingAttempts\": {\n          \".write\": false,\n          \".read\": false\n        },\n        \n        \"violations\": {\n          \".write\": false,\n          \".read\": false\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T08:39:34.672Z] 01:39:34.672 [NamespaceSystem-blocking-namespace-operation-dispatcher-103] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"01:39:34.672 [NamespaceSystem-blocking-namespace-operation-dispatcher-103] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T08:39:34.676Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T08:39:34.676Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[info] ✔  database: Rules updated. {"metadata":{"emulator":{"name":"database"},"message":"Rules updated."}}

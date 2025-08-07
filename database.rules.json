@@ -1,0 +1,75 @@
+{
+  "rules": {
+    "games": {
+      "$gameId": {
+        ".read": true,
+        
+        "players": {
+          "$playerId": {
+            "name": {
+              ".write": true
+            },
+            "ready": {
+              ".write": true
+            },
+            "currentCard": {
+              ".write": true,
+              ".validate": "newData.hasChildren(['suit', 'rank', 'value'])"
+            },
+            "hand": {
+              ".write": false
+            },
+            "cardsPlayed": {
+              ".write": false
+            },
+            "roundsWon": {
+              ".write": false
+            }
+          }
+        },
+        
+        "status": {
+          ".write": "newData.val() === 'waiting' || newData.val() === 'ready'"
+        },
+        
+        "trumpSuit": {
+          ".write": false
+        },
+        
+        "currentRound": {
+          ".write": false
+        },
+        
+        "roundTimer": {
+          ".write": false
+        },
+        
+        "rounds": {
+          ".write": false
+        },
+        
+        "bet": {
+          ".write": true
+        },
+        
+        "createdAt": {
+          ".write": "!data.exists()"
+        },
+        
+        "id": {
+          ".write": "!data.exists()"
+        },
+        
+        "cheatingAttempts": {
+          ".write": false,
+          ".read": false
+        },
+        
+        "violations": {
+          ".write": false,
+          ".read": false
+        }
+      }
+    }
+  }
+}
