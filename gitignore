@@ -1,0 +1,115 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+*.lcov
+.nyc_output
+
+# Production build
+dist/
+dist-ssr/
+build/
+*.local
+
+# Firebase
+.firebase/
+*.cache
+firebase-debug.log
+firestore-debug.log
+database-debug.log
+ui-debug.log
+pubsub-debug.log
+auth_export/
+firestore_export/
+database_export/
+
+# Firebase Functions
+functions/lib/
+functions/node_modules/
+functions/.env
+functions/*.log
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Package manager files
+.npm
+.yarn-integrity
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# SSL Certificates (never commit these!)
+*.pem
+*.key
+*.crt
+*.cer
+*.pfx
+*.p12
+
+# Backup files
+*.backup
+*.bak
+*.old
+~*
+
+# Claude artifacts  
+.claude/
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
