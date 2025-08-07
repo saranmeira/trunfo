@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, connectDatabaseEmulator } from 'firebase/database';
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -28,7 +28,7 @@ if (import.meta.env.DEV) {
     connectDatabaseEmulator(db, 'localhost', 9000);
     console.log('✅ Database emulator connected on port 9000');
   } catch (error) {
-    if (error.message?.includes('already been initialized')) {
+    if ((error as Error).message?.includes('already been initialized')) {
       console.log('✅ Database emulator already connected');
     } else {
       console.warn('⚠️ Database emulator connection failed:', error);

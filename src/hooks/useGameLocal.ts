@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { Game, Player, Card } from '../types/game';
 import { getRandomTrumpSuit, determineRoundWinner, dealCardsWithTrump } from '../utils/cards';
 
-export function useGameLocal(gameId: string | null, playerId: string) {
+export function useGameLocal(_gameId: string | null, playerId: string) {
   const [game, setGame] = useState<Game | null>(null);
   const [loading] = useState(false);
   const [error] = useState<string | null>(null);

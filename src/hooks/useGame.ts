@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { db } from '../config/firebase';
-import { ref, onValue, set, update, push, get } from 'firebase/database';
-import type { Game, Player, Card, GameStatus } from '../types/game';
+import { ref, onValue, set, update, get } from 'firebase/database';
+import type { Game, Card } from '../types/game';
 import { getRandomTrumpSuit, determineRoundWinner, dealCardsWithTrump } from '../utils/cards';
 import { v4 as uuidv4 } from 'uuid';
 

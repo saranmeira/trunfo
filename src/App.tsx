@@ -76,7 +76,7 @@ function GamePage() {
       <Home
         onCreateGame={handleCreateGame}
         onJoinGame={handleJoinGame}
-        gameIdFromUrl={gameIdFromUrl}
+        gameIdFromUrl={gameIdFromUrl || null}
       />
     );
   }

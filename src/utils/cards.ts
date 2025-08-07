@@ -91,7 +91,7 @@ export function dealCardsWithTrump(trumpSuit: Suit): DealResult {
   };
 }
 
-export function dealCards(deck: Card[]): [Card[], Card[]] {
+export function dealCards(_deck: Card[]): [Card[], Card[]] {
   const trumpSuit = getRandomTrumpSuit();
   const result = dealCardsWithTrump(trumpSuit);
   return [result.player1Hand, result.player2Hand];
@@ -114,7 +114,6 @@ function validateHandsWithTrump(
   
   const trumpCards1 = hand1.filter(card => card.suit === trumpSuit).length;
   const trumpCards2 = hand2.filter(card => card.suit === trumpSuit).length;
-  const trumpDifference = Math.abs(trumpCards1 - trumpCards2);
   
   const highCards1 = hand1.filter(card => card.value >= 11).length;
   const highCards2 = hand2.filter(card => card.value >= 11).length;

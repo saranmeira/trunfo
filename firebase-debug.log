@@ -640,3 +640,70 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2025-08-07T08:39:34.676Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
 [debug] [2025-08-07T08:39:34.676Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
 [info] ✔  database: Rules updated. {"metadata":{"emulator":{"name":"database"},"message":"Rules updated."}}
+[debug] [2025-08-07T09:00:28.342Z] ----------------------------------------------------------------------
+[debug] [2025-08-07T09:00:28.343Z] Command:       /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/firebase emulators:start --only database
+[debug] [2025-08-07T09:00:28.343Z] CLI Version:   14.12.0
+[debug] [2025-08-07T09:00:28.343Z] Platform:      darwin
+[debug] [2025-08-07T09:00:28.343Z] Node Version:  v23.7.0
+[debug] [2025-08-07T09:00:28.343Z] Time:          Thu Aug 07 2025 02:00:28 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-08-07T09:00:28.344Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-07T09:00:28.420Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-07T09:00:28.421Z] > authorizing via signed-in user (meirasaran@gmail.com)
+[debug] [2025-08-07T09:00:28.491Z] openjdk version "23.0.2" 2025-01-21
+
+[debug] [2025-08-07T09:00:28.491Z] OpenJDK Runtime Environment Homebrew (build 23.0.2)
+OpenJDK 64-Bit Server VM Homebrew (build 23.0.2, mixed mode, sharing)
+
+[debug] [2025-08-07T09:00:28.494Z] Parsed Java major version: 23
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2025-08-07T09:00:28.631Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T09:00:28.631Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-08-07T09:00:28.631Z] assigned listening specs for emulators {"user":{"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-08-07T09:00:28.632Z] Checked if tokens are valid: false, expires at: 1754557005239
+[debug] [2025-08-07T09:00:28.632Z] Checked if tokens are valid: false, expires at: 1754557005239
+[debug] [2025-08-07T09:00:28.632Z] > refreshing access token with scopes: []
+[debug] [2025-08-07T09:00:28.632Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-08-07T09:00:28.632Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T09:00:28.745Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-08-07T09:00:28.745Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-07T09:00:28.757Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/undefined [none]
+[debug] [2025-08-07T09:00:29.157Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/undefined 403
+[debug] [2025-08-07T09:00:29.157Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/undefined {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2025-08-07T09:00:29.158Z] Request to https://firebase.googleapis.com/v1beta1/projects/undefined had HTTP Error: 403, The caller does not have permission
+[debug] [2025-08-07T09:00:29.158Z] Failed to retrieve default database instance: {"name":"FirebaseError","children":[],"exit":2,"message":"Failed to get Firebase project undefined. Please make sure the project exists and your account has permission to access it.","original":{"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://firebase.googleapis.com/v1beta1/projects/undefined had HTTP Error: 403, The caller does not have permission","status":403},"status":500} {"metadata":{"emulator":{"name":"database"},"message":"Failed to retrieve default database instance: {\"name\":\"FirebaseError\",\"children\":[],\"exit\":2,\"message\":\"Failed to get Firebase project undefined. Please make sure the project exists and your account has permission to access it.\",\"original\":{\"name\":\"FirebaseError\",\"children\":[],\"context\":{\"body\":{\"error\":{\"code\":403,\"message\":\"The caller does not have permission\",\"status\":\"PERMISSION_DENIED\"}},\"response\":{\"statusCode\":403}},\"exit\":1,\"message\":\"Request to https://firebase.googleapis.com/v1beta1/projects/undefined had HTTP Error: 403, The caller does not have permission\",\"status\":403},\"status\":500}"}}
+[debug] [2025-08-07T09:00:29.158Z] database rules config:  [{"instance":"undefined-default-rtdb","rules":"/Users/bruno/Downloads/trunfo/database.rules.json"}]
+[debug] [2025-08-07T09:00:29.162Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2025-08-07T09:00:29.162Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-08-07T09:00:29.162Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2025-08-07T09:00:29.163Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/bruno/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2025-08-07T09:00:29.634Z] 02:00:29.633 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"02:00:29.633 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2025-08-07T09:00:29.697Z] 02:00:29.697 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"02:00:29.697 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[warn] ⚠  emulators: The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI is not starting, either because none of the running emulators have a UI component or the Emulator UI cannot determine the Project ID. Pass the --project flag to specify a project."}}
+[debug] [2025-08-07T09:00:29.774Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=undefined-default-rtdb
+[debug] [2025-08-07T09:00:29.774Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \"games\": {\n      \"$gameId\": {\n        \".read\": true,\n        \n        \"players\": {\n          \"$playerId\": {\n            \"name\": {\n              \".write\": true\n            },\n            \"ready\": {\n              \".write\": true\n            },\n            \"currentCard\": {\n              \".write\": true,\n              \".validate\": \"newData.hasChildren(['suit', 'rank', 'value'])\"\n            },\n            \"hand\": {\n              \".write\": false\n            },\n            \"cardsPlayed\": {\n              \".write\": false\n            },\n            \"roundsWon\": {\n              \".write\": false\n            }\n          }\n        },\n        \n        \"status\": {\n          \".write\": \"newData.val() === 'waiting' || newData.val() === 'ready'\"\n        },\n        \n        \"trumpSuit\": {\n          \".write\": false\n        },\n        \n        \"currentRound\": {\n          \".write\": false\n        },\n        \n        \"roundTimer\": {\n          \".write\": false\n        },\n        \n        \"rounds\": {\n          \".write\": false\n        },\n        \n        \"bet\": {\n          \".write\": true\n        },\n        \n        \"createdAt\": {\n          \".write\": \"!data.exists()\"\n        },\n        \n        \"id\": {\n          \".write\": \"!data.exists()\"\n        },\n        \n        \"cheatingAttempts\": {\n          \".write\": false,\n          \".read\": false\n        },\n        \n        \"violations\": {\n          \".write\": false,\n          \".read\": false\n        }\n      }\n    }\n  }\n}"
+[debug] [2025-08-07T09:00:29.899Z] 02:00:29.899 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - undefined-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 49ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"02:00:29.899 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - undefined-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 49ms, init: 0ms\n"}}
+[debug] [2025-08-07T09:00:29.927Z] 02:00:29.926 [NamespaceSystem-blocking-namespace-operation-dispatcher-8] INFO com.firebase.core.namespace.StateManager - Namespace undefined-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"02:00:29.926 [NamespaceSystem-blocking-namespace-operation-dispatcher-8] INFO com.firebase.core.namespace.StateManager - Namespace undefined-default-rtdb status Active to Active\n"}}
+[debug] [2025-08-07T09:00:29.945Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2025-08-07T09:00:29.945Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2025-08-07T09:00:29.946Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Database │ 127.0.0.1:9000 │
+└──────────┴────────────────┘
+  Emulator Hub not running.
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 

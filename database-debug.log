@@ -1,5 +1,4 @@
-01:21:09.892 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
-01:21:09.948 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
-01:21:10.233 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - nove-games-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 42ms, init: 0ms
-01:21:10.253 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
-01:39:34.672 [NamespaceSystem-blocking-namespace-operation-dispatcher-103] INFO com.firebase.core.namespace.StateManager - Namespace nove-games-default-rtdb status Active to Active
+02:00:29.633 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+02:00:29.697 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+02:00:29.899 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - undefined-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 49ms, init: 0ms
+02:00:29.926 [NamespaceSystem-blocking-namespace-operation-dispatcher-8] INFO com.firebase.core.namespace.StateManager - Namespace undefined-default-rtdb status Active to Active

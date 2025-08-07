@@ -9,10 +9,10 @@ interface LobbyProps {
   onSetReady: () => void;
 }
 
-export const Lobby: React.FC<LobbyProps> = ({ game, playerId, onStartGame, onSetReady }) => {
+export const Lobby: React.FC<LobbyProps> = ({ game, playerId, onSetReady }) => {
   const [copied, setCopied] = useState(false);
   const playerCount = game ? Object.keys(game.players).length : 0;
-  const isHost = game && Object.keys(game.players)[0] === playerId;
+
   const gameUrl = game ? `${window.location.origin}/game/${game.id}` : '';
   
   const handleCopy = () => {

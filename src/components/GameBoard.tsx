@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Game, Card as CardType } from '../types/game';
 import { Card } from './Card';
-import { Crown, Heart, Diamond, Club, Spade, Trophy, Home, RotateCcw, X } from 'lucide-react';
+import { Crown, Heart, Diamond, Club, Spade, Trophy, Home } from 'lucide-react';
 
 interface GameBoardProps {
   game: Game;
