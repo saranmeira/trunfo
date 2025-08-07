@@ -1,9 +1,9 @@
 import type { Card, Suit, Rank } from '../types/game';
+import { GAME_CONSTANTS } from '../constants/game';
 
 const SUITS: Suit[] = ['♠', '♥', '♦', '♣'];
 const RANKS: Rank[] = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
-const MAX_RESHUFFLE_ATTEMPTS = 100;
 
 export interface DealResult {
   player1Hand: Card[];
@@ -60,7 +60,7 @@ export function dealCardsWithTrump(trumpSuit: Suit): DealResult {
   let reshuffleCount = 0;
   let validationDetails: DealResult['validationDetails'] | null = null;
 
-  for (let attempt = 0; attempt < MAX_RESHUFFLE_ATTEMPTS; attempt++) {
+  for (let attempt = 0; attempt < GAME_CONSTANTS.HAND_BALANCE.MAX_RESHUFFLE_ATTEMPTS; attempt++) {
     const shuffled = shuffleDeck(deck);
     const player1Hand = shuffled.slice(0, 9);
     const player2Hand = shuffled.slice(9, 18);
@@ -115,8 +115,8 @@ function validateHandsWithTrump(
   const trumpCards1 = hand1.filter(card => card.suit === trumpSuit).length;
   const trumpCards2 = hand2.filter(card => card.suit === trumpSuit).length;
   
-  const highCards1 = hand1.filter(card => card.value >= 11).length;
-  const highCards2 = hand2.filter(card => card.value >= 11).length;
+  const highCards1 = hand1.filter(card => card.value >= GAME_CONSTANTS.HAND_BALANCE.MIN_HIGH_CARD_VALUE).length;
+  const highCards2 = hand2.filter(card => card.value >= GAME_CONSTANTS.HAND_BALANCE.MIN_HIGH_CARD_VALUE).length;
 
   const details: DealResult['validationDetails'] = {
     player1Value: value1,
@@ -128,26 +128,26 @@ function validateHandsWithTrump(
     player2HighCards: highCards2
   };
 
-  if (value1 < 55 || value1 > 90) {
+  if (value1 < GAME_CONSTANTS.HAND_BALANCE.MIN_HAND_VALUE || value1 > GAME_CONSTANTS.HAND_BALANCE.MAX_HAND_VALUE) {
     return { 
       isValid: false, 
-      failureReason: `Player 1 hand value ${value1} outside range [55-90]`,
+      failureReason: `Player 1 hand value ${value1} outside range [${GAME_CONSTANTS.HAND_BALANCE.MIN_HAND_VALUE}-${GAME_CONSTANTS.HAND_BALANCE.MAX_HAND_VALUE}]`,
       details 
     };
   }
   
-  if (value2 < 55 || value2 > 90) {
+  if (value2 < GAME_CONSTANTS.HAND_BALANCE.MIN_HAND_VALUE || value2 > GAME_CONSTANTS.HAND_BALANCE.MAX_HAND_VALUE) {
     return { 
       isValid: false, 
-      failureReason: `Player 2 hand value ${value2} outside range [55-90]`,
+      failureReason: `Player 2 hand value ${value2} outside range [${GAME_CONSTANTS.HAND_BALANCE.MIN_HAND_VALUE}-${GAME_CONSTANTS.HAND_BALANCE.MAX_HAND_VALUE}]`,
       details 
     };
   }
   
-  if (valueDifference > 8) {
+  if (valueDifference > GAME_CONSTANTS.HAND_BALANCE.MAX_VALUE_DIFFERENCE) {
     return { 
       isValid: false, 
-      failureReason: `Value difference ${valueDifference} exceeds maximum of 8`,
+      failureReason: `Value difference ${valueDifference} exceeds maximum of ${GAME_CONSTANTS.HAND_BALANCE.MAX_VALUE_DIFFERENCE}`,
       details 
     };
   }
@@ -156,6 +156,14 @@ function validateHandsWithTrump(
     return { 
       isValid: false, 
       failureReason: `Trump card imbalance: P1=${trumpCards1}, P2=${trumpCards2} (must be equal)`,
+      details 
+    };
+  }
+  
+  if (trumpCards1 < GAME_CONSTANTS.TRUMP_CARDS.MIN_PER_PLAYER || trumpCards1 > GAME_CONSTANTS.TRUMP_CARDS.MAX_PER_PLAYER) {
+    return { 
+      isValid: false, 
+      failureReason: `Trump cards per player (${trumpCards1}) must be between ${GAME_CONSTANTS.TRUMP_CARDS.MIN_PER_PLAYER}-${GAME_CONSTANTS.TRUMP_CARDS.MAX_PER_PLAYER}`,
       details 
     };
   }

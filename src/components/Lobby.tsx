@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Game } from '../types/game';
 import { Check, Copy } from 'lucide-react';
+import { GAME_CONSTANTS } from '../constants/game';
 
 interface LobbyProps {
   game: Game | null;
@@ -61,7 +62,7 @@ export const Lobby: React.FC<LobbyProps> = ({ game, playerId, onSetReady }) => {
             </div>
 
             <div className="mb-6">
-              <h3 className="font-semibold mb-2">Players ({playerCount}/2)</h3>
+              <h3 className="font-semibold mb-2">Players ({playerCount}/{GAME_CONSTANTS.MAX_PLAYERS})</h3>
               {Object.values(game.players).map(player => (
                 <div key={player.id} className="flex items-center justify-between p-3 bg-gray-50 rounded mb-2">
                   <div className="flex items-center gap-2">
@@ -80,14 +81,14 @@ export const Lobby: React.FC<LobbyProps> = ({ game, playerId, onSetReady }) => {
                   </div>
                 </div>
               ))}
-              {playerCount < 2 && (
+              {playerCount < GAME_CONSTANTS.MAX_PLAYERS && (
                 <div className="p-3 border-2 border-dashed border-gray-300 rounded text-gray-400 text-center">
                   Waiting for opponent...
                 </div>
               )}
             </div>
 
-            {playerCount === 2 && (
+            {playerCount === GAME_CONSTANTS.MAX_PLAYERS && (
               <div className="space-y-3">
                 {!game.players[playerId]?.ready ? (
                   <button

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Game, Player, Card } from '../types/game';
 import { getRandomTrumpSuit, determineRoundWinner, dealCardsWithTrump } from '../utils/cards';
+import { GAME_CONSTANTS } from '../constants/game';
 
 export function useGameLocal(_gameId: string | null, playerId: string) {
   const [game, setGame] = useState<Game | null>(null);
@@ -13,11 +14,11 @@ export function useGameLocal(_gameId: string | null, playerId: string) {
     const initialGame: Game = {
       id: newGameId,
       createdAt: Date.now(),
-      status: 'waiting',
+      status: GAME_CONSTANTS.GAME_STATUS.WAITING,
       trumpSuit: null,
       currentRound: 0,
       roundTimer: null,
-      bet: 100,
+      bet: GAME_CONSTANTS.DEFAULT_BET,
       players: {
         [playerId]: {
           id: playerId,
@@ -41,7 +42,7 @@ export function useGameLocal(_gameId: string | null, playerId: string) {
 
     const playerCount = Object.keys(game.players).length;
     
-    if (playerCount >= 2) {
+    if (playerCount >= GAME_CONSTANTS.MAX_PLAYERS) {
       throw new Error('Game is full');
     }
 
@@ -61,7 +62,7 @@ export function useGameLocal(_gameId: string | null, playerId: string) {
         ...game.players,
         [playerId]: newPlayer
       },
-      status: playerCount === 1 ? 'ready' : game.status
+      status: playerCount === 1 ? GAME_CONSTANTS.GAME_STATUS.READY : game.status
     });
   };
 
@@ -89,9 +90,9 @@ export function useGameLocal(_gameId: string | null, playerId: string) {
 
     setGame({
       ...game,
-      status: 'playing',
+      status: GAME_CONSTANTS.GAME_STATUS.PLAYING,
       trumpSuit,
-      roundTimer: Date.now() + 8000,
+      roundTimer: Date.now() + GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS,
       players: updatedPlayers
     });
   };
@@ -114,7 +115,7 @@ export function useGameLocal(_gameId: string | null, playerId: string) {
         game.trumpSuit!
       );
 
-      const winnerId = winner === 'player1' ? playerId : opponent.id;
+      const winnerId = winner === GAME_CONSTANTS.ROUND_RESULT.PLAYER1 ? playerId : opponent.id;
       
       updatedPlayers[winnerId] = {
         ...updatedPlayers[winnerId],
@@ -136,7 +137,14 @@ export function useGameLocal(_gameId: string | null, playerId: string) {
         ...updatedPlayers[opponent.id],
         currentCard: null
       };
+      
+      // Extra safety: ensure all current cards are cleared
+      Object.keys(updatedPlayers).forEach(pid => {
+        updatedPlayers[pid].currentCard = null;
+      });
 
+      const isGameOver = updatedPlayers[winnerId].roundsWon >= GAME_CONSTANTS.ROUNDS_TO_WIN || game.currentRound >= GAME_CONSTANTS.TOTAL_ROUNDS - 1;
+      
       setGame({
         ...game,
         players: updatedPlayers,
@@ -146,9 +154,9 @@ export function useGameLocal(_gameId: string | null, playerId: string) {
           winner: winnerId,
           timestamp: Date.now()
         }],
-        currentRound: game.currentRound === 8 ? game.currentRound : game.currentRound + 1,
-        status: game.currentRound === 8 ? 'match_end' : game.status,
-        roundTimer: game.currentRound === 8 ? null : Date.now() + 8000
+        currentRound: isGameOver ? game.currentRound : game.currentRound + 1,
+        status: isGameOver ? GAME_CONSTANTS.GAME_STATUS.MATCH_END : game.status,
+        roundTimer: isGameOver ? null : Date.now() + GAME_CONSTANTS.TIMERS.ROUND_POPUP_DURATION_MS + GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS
       });
     } else {
       setGame({

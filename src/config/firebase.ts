@@ -21,17 +21,13 @@ export const auth = getAuth(app);
 
 // Always use emulators in development
 if (import.meta.env.DEV) {
-  console.log('🔥 Connecting to Firebase Emulators...');
-  
   // Connect to database emulator
   try {
     connectDatabaseEmulator(db, 'localhost', 9000);
-    console.log('✅ Database emulator connected on port 9000');
   } catch (error) {
-    if ((error as Error).message?.includes('already been initialized')) {
-      console.log('✅ Database emulator already connected');
-    } else {
-      console.warn('⚠️ Database emulator connection failed:', error);
+    // Only log actual connection errors, not "already connected" errors
+    if (!(error as Error).message?.includes('already been initialized')) {
+      console.error('Database emulator connection failed:', error);
     }
   }
 }

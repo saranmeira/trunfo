@@ -4,6 +4,7 @@ import { ref, onValue, set, update, get } from 'firebase/database';
 import type { Game, Card } from '../types/game';
 import { getRandomTrumpSuit, determineRoundWinner, dealCardsWithTrump } from '../utils/cards';
 import { v4 as uuidv4 } from 'uuid';
+import { GAME_CONSTANTS } from '../constants/game';
 
 export function useGame(gameId: string | null, playerId: string) {
   const [game, setGame] = useState<Game | null>(null);
@@ -42,11 +43,11 @@ export function useGame(gameId: string | null, playerId: string) {
       const initialGame: Game = {
         id: gameId,
         createdAt: Date.now(),
-        status: 'waiting',
+        status: GAME_CONSTANTS.GAME_STATUS.WAITING,
         trumpSuit: null,
         currentRound: 0,
         roundTimer: null,
-        bet: 100,
+        bet: GAME_CONSTANTS.DEFAULT_BET,
         players: {
           [playerId]: {
             id: playerId,
@@ -86,7 +87,7 @@ export function useGame(gameId: string | null, playerId: string) {
       
       const playerCount = Object.keys(currentGame.players).length;
       
-      if (playerCount >= 2) {
+      if (playerCount >= GAME_CONSTANTS.MAX_PLAYERS) {
         throw new Error('Game is full');
       }
 
@@ -108,7 +109,7 @@ export function useGame(gameId: string | null, playerId: string) {
       });
 
       if (playerCount === 1) {
-        updates[`games/${gameIdToJoin}/status`] = 'ready';
+        updates[`games/${gameIdToJoin}/status`] = GAME_CONSTANTS.GAME_STATUS.READY;
       }
 
       await update(ref(db), updates);
@@ -128,9 +129,9 @@ export function useGame(gameId: string | null, playerId: string) {
 
 
       const updates: any = {};
-      updates[`games/${gameId}/status`] = 'playing';
+      updates[`games/${gameId}/status`] = GAME_CONSTANTS.GAME_STATUS.PLAYING;
       updates[`games/${gameId}/trumpSuit`] = trumpSuit;
-      updates[`games/${gameId}/roundTimer`] = Date.now() + 15000; // 15s for first round (no popup)
+      updates[`games/${gameId}/roundTimer`] = Date.now() + GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS;
       
       updates[`games/${gameId}/players/${playerIds[0]}/hand`] = dealResult.player1Hand;
       updates[`games/${gameId}/players/${playerIds[0]}/ready`] = true;
@@ -148,57 +149,66 @@ export function useGame(gameId: string | null, playerId: string) {
   const playCard = async (card: Card, isAutoPlay: boolean = false): Promise<void> => {
     if (!gameId || !game) return;
 
-
     try {
       const updates: any = {};
-      
-      // First, update the current player's card
-      updates[`games/${gameId}/players/${playerId}/currentCard`] = card;
-      
-      // Update player's hand immediately
-      const newHand = game.players[playerId].hand.filter(
-        c => !(c.suit === card.suit && c.rank === card.rank)
-      );
-      updates[`games/${gameId}/players/${playerId}/hand`] = newHand;
-      updates[`games/${gameId}/players/${playerId}/cardsPlayed`] = 
-        [...(game.players[playerId].cardsPlayed || []), card];
-
       const opponent = Object.values(game.players).find(p => p.id !== playerId);
       
-      // Check if both players have played their cards OR if this is an auto-play after timer expired
-      // For first round, timer expires at roundTimer
-      // For subsequent rounds, timer expires 22 seconds after roundTimer is set (7s popup + 15s play)
-      const timeExpired = game.roundTimer && Date.now() >= game.roundTimer; 
-      
-      // Always check if we should complete the round when timer has expired and this is auto-play
-      // OR if opponent has already played their card
-      if (opponent?.currentCard || (isAutoPlay && timeExpired)) {
+      // Check if we already have both cards played (stuck round scenario)
+      if (game.players[playerId]?.currentCard && opponent?.currentCard) {
+        // Both cards already played - just try to process the round
+        // This handles the fallback case where round evaluation didn't trigger
+      } else if (!game.players[playerId]?.currentCard) {
+        // SECURITY: Validate that the card being played is in the player's hand
+        const playerHand = game.players[playerId]?.hand || [];
+        const cardInHand = playerHand.some(
+          c => c.suit === card.suit && c.rank === card.rank
+        );
         
-        // If opponent hasn't played and time expired, we MUST auto-play their first card
-        let opponentCard = opponent?.currentCard;
-        if (!opponentCard && opponent?.hand && opponent.hand.length > 0 && timeExpired) {
-          opponentCard = opponent.hand[0];
-          updates[`games/${gameId}/players/${opponent.id}/currentCard`] = opponentCard;
-          
-          // Update opponent's hand immediately for auto-play
-          if (opponent.hand && opponent.hand.length > 0) {
-            const opponentNewHandForAutoPlay = opponent.hand.filter(
-              c => !(c.suit === opponentCard!.suit && c.rank === opponentCard!.rank)
-            );
-            updates[`games/${gameId}/players/${opponent.id}/hand`] = opponentNewHandForAutoPlay;
-            updates[`games/${gameId}/players/${opponent.id}/cardsPlayed`] = 
-              [...(opponent.cardsPlayed || []), opponentCard];
-          }
+        if (!cardInHand) {
+          console.error('Security violation: Attempting to play card not in hand');
+          throw new Error('Invalid card - not in player hand');
         }
         
-        // Now we should have both cards (current player's card + opponent's card)
-        if (opponentCard) {
-          // Determine the winner
-        const playerIds = Object.keys(game.players);
-        const isPlayer1 = playerId === playerIds[0];
+        // Only update if player hasn't played a card yet this round
+        updates[`games/${gameId}/players/${playerId}/currentCard`] = card;
+      
+        // Update player's hand immediately
+        const newHand = playerHand.filter(
+          c => !(c.suit === card.suit && c.rank === card.rank)
+        );
+        updates[`games/${gameId}/players/${playerId}/hand`] = newHand;
+        updates[`games/${gameId}/players/${playerId}/cardsPlayed`] = 
+          [...(game.players[playerId].cardsPlayed || []), card];
+      } else {
+        // Player already has a card played, ignore this play attempt
+        return;
+      }
+      
+      // Check if we need to handle round completion
+      const myCardPlayed = updates[`games/${gameId}/players/${playerId}/currentCard`] || game.players[playerId]?.currentCard;
+      const opponentCardPlayed = opponent?.currentCard;
+      const bothCardsPlayed = myCardPlayed && opponentCardPlayed;
+      
+      // Process the round only if both cards are already played
+      // SECURITY: Never process round without both cards being legitimately played
+      if (bothCardsPlayed) {
         
-        const player1Card = isPlayer1 ? card : opponentCard;
-        const player2Card = isPlayer1 ? opponentCard : card;
+        let opponentCard = opponent?.currentCard;
+        let myCard = myCardPlayed || card;
+        
+        // SECURITY: Never allow client to set opponent's cards
+        // Only process round if opponent has already played their card
+        // Auto-play should only affect the current player's own cards
+        
+        // Process round completion only if we have both cards already played
+        if (opponentCard && myCard) {
+          // Determine the winner (re-get playerIds without sort for consistency)
+          const playerIdsForWinner = Object.keys(game.players);
+          const isPlayer1ForWinner = playerId === playerIdsForWinner[0];
+          
+          // myCard was already set above
+          const player1Card = isPlayer1ForWinner ? myCard : opponentCard;
+          const player2Card = isPlayer1ForWinner ? opponentCard : myCard;
         
         const winner = determineRoundWinner(
           player1Card,
@@ -206,7 +216,7 @@ export function useGame(gameId: string | null, playerId: string) {
           game.trumpSuit!
         );
 
-        const winnerId = winner === 'draw' ? null : (winner === 'player1' ? playerIds[0] : playerIds[1]);
+        const winnerId = winner === GAME_CONSTANTS.ROUND_RESULT.DRAW ? null : (winner === GAME_CONSTANTS.ROUND_RESULT.PLAYER1 ? playerIdsForWinner[0] : playerIdsForWinner[1]);
         
         // Record the round result
         const roundResult = {
@@ -235,19 +245,24 @@ export function useGame(gameId: string | null, playerId: string) {
             [...(game.players[opponent.id].cardsPlayed || []), opponentCard];
         }
 
-        // Clear current cards
+        // Clear current cards - ensure both players' cards are always cleared
         updates[`games/${gameId}/players/${playerId}/currentCard`] = null;
         if (opponent?.id) {
           updates[`games/${gameId}/players/${opponent.id}/currentCard`] = null;
         }
+        // Extra safety: clear all player current cards
+        Object.keys(game.players).forEach(pid => {
+          updates[`games/${gameId}/players/${pid}/currentCard`] = null;
+        });
 
         // Check if game is over (winner has 5 rounds or all 9 rounds played)
-        if (newWinnerScore >= 5 || game.currentRound >= 8) {
-          updates[`games/${gameId}/status`] = 'match_end';
+        if (newWinnerScore >= GAME_CONSTANTS.ROUNDS_TO_WIN || game.currentRound >= GAME_CONSTANTS.TOTAL_ROUNDS - 1) {
+          updates[`games/${gameId}/status`] = GAME_CONSTANTS.GAME_STATUS.MATCH_END;
+          updates[`games/${gameId}/roundTimer`] = null;
         } else {
           updates[`games/${gameId}/currentRound`] = game.currentRound + 1;
-          // Set timer to start 5 seconds from now (after popup) + 15 seconds for play
-          updates[`games/${gameId}/roundTimer`] = Date.now() + 20000; // Timer will be at 15s after popup ends
+          // Set timer for next round (popup will show for 5s, then 15s to play)
+          updates[`games/${gameId}/roundTimer`] = Date.now() + GAME_CONSTANTS.TIMERS.ROUND_POPUP_DURATION_MS + GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS;
         }
         } // Close the if (opponentCard) block after determining winner
       } // Close the if (opponent?.currentCard || (isAutoPlay && timeExpired)) block
@@ -275,9 +290,9 @@ export function useGame(gameId: string | null, playerId: string) {
         const playerIds = Object.keys(game.players);
 
         
-        updates[`games/${gameId}/status`] = 'playing';
+        updates[`games/${gameId}/status`] = GAME_CONSTANTS.GAME_STATUS.PLAYING;
         updates[`games/${gameId}/trumpSuit`] = trumpSuit;
-        updates[`games/${gameId}/roundTimer`] = Date.now() + 15000; // 15s for first round (no popup)
+        updates[`games/${gameId}/roundTimer`] = Date.now() + GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS;
         
         updates[`games/${gameId}/players/${playerIds[0]}/hand`] = dealResult.player1Hand;
         updates[`games/${gameId}/players/${playerIds[1]}/hand`] = dealResult.player2Hand;

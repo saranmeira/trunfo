@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import type { Game, Card as CardType } from '../types/game';
 import { Card } from './Card';
 import { Crown, Heart, Diamond, Club, Spade, Trophy, Home } from 'lucide-react';
+import { GAME_CONSTANTS } from '../constants/game';
 
 interface GameBoardProps {
   game: Game;
@@ -13,10 +14,10 @@ interface GameBoardProps {
 export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard }) => {
   const navigate = useNavigate();
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
-  const [timeLeft, setTimeLeft] = useState(15);
+  const [timeLeft, setTimeLeft] = useState(Math.floor(GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS / 1000));
   const [showRoundResult, setShowRoundResult] = useState(false);
   const [lastRoundWinner, setLastRoundWinner] = useState<string | null>(null);
-  const [modalCountdown, setModalCountdown] = useState(5);
+  const [modalCountdown, setModalCountdown] = useState(Math.floor(GAME_CONSTANTS.TIMERS.ROUND_POPUP_DURATION_MS / 1000));
   const [showLeaveModal, setShowLeaveModal] = useState(false);
 
   const currentPlayer = game.players[playerId];
@@ -26,31 +27,33 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
   const [isTimerExpired, setIsTimerExpired] = useState(false);
 
   useEffect(() => {
-    if (game.status !== 'playing' || !game.roundTimer) return;
+    if (game.status !== GAME_CONSTANTS.GAME_STATUS.PLAYING || !game.roundTimer) return;
 
     const interval = setInterval(() => {
       const now = Date.now();
       
-      // If we're showing the round result, keep timer at 15
+      // If we're showing the round result, keep timer at play time seconds
       if (showRoundResult) {
-        setTimeLeft(15);
+        setTimeLeft(Math.floor(GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS / 1000));
         return;
       }
       
       // Calculate remaining time
       let remaining;
       if (game.currentRound === 0) {
-        // First round: timer counts from roundTimer directly
+        // First round: no popup, timer counts down directly
         remaining = Math.max(0, Math.floor((game.roundTimer! - now) / 1000));
       } else {
-        // Subsequent rounds: timer starts after 5-second popup
-        const actualStartTime = game.roundTimer! - 20000 + 5000; // When the popup ends
-        if (now < actualStartTime) {
-          // Still in popup period, show 15
-          remaining = 15;
+        // Subsequent rounds: account for popup time
+        const totalTime = GAME_CONSTANTS.TIMERS.ROUND_POPUP_DURATION_MS + GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS;
+        const actualPlayStartTime = game.roundTimer! - totalTime + GAME_CONSTANTS.TIMERS.ROUND_POPUP_DURATION_MS;
+        
+        if (now < actualPlayStartTime) {
+          // Still in popup period, show full time
+          remaining = Math.floor(GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS / 1000);
         } else {
-          // Popup is over, count down from 15
-          remaining = Math.max(0, 15 - Math.floor((now - actualStartTime) / 1000));
+          // Popup is over, count down
+          remaining = Math.max(0, Math.floor((game.roundTimer! - now) / 1000));
         }
       }
       setTimeLeft(remaining);
@@ -64,52 +67,99 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
       }
       
       // Auto-play when timer expires
-      if (timerExpired && !currentPlayer?.currentCard && currentPlayer?.hand.length > 0 && !hasAutoPlayed) {
+      if (timerExpired && !currentPlayer?.currentCard && currentPlayer?.hand?.length > 0 && !hasAutoPlayed) {
         // Use selected card if available, otherwise use first card
         const cardToPlay = selectedCard || currentPlayer.hand[0];
         if (cardToPlay) {
           setHasAutoPlayed(true);
           setSelectedCard(null); // Clear selection immediately
-          // Small delay to ensure both clients can auto-play
+          
+          // Both players auto-play their own cards with a small stagger
+          // to avoid exact simultaneous database writes
+          const isFirstPlayer = playerId < (opponent?.id || '');
+          const delay = isFirstPlayer 
+            ? GAME_CONSTANTS.TIMERS.AUTO_PLAY_DELAY_MIN_MS 
+            : GAME_CONSTANTS.TIMERS.AUTO_PLAY_DELAY_MIN_MS + 200;
+          
           setTimeout(() => {
-            onPlayCard(cardToPlay, true); // Pass true for auto-play
-          }, 100 + Math.random() * 100); // 100-200ms delay to avoid exact simultaneous writes
+            onPlayCard(cardToPlay, true); // Each player only plays their own card
+          }, delay);
         }
       }
-    }, 100);
+    }, GAME_CONSTANTS.TIMERS.TIMER_UPDATE_INTERVAL_MS);
 
     return () => clearInterval(interval);
-  }, [game.roundTimer, game.status, currentPlayer, onPlayCard, showRoundResult, hasAutoPlayed, playerId, selectedCard, isTimerExpired]);
+  }, [game.roundTimer, game.status, currentPlayer, onPlayCard, showRoundResult, hasAutoPlayed, playerId, selectedCard, isTimerExpired, opponent]);
 
   // Reset auto-play flag and timer expired state when round changes
   useEffect(() => {
     setHasAutoPlayed(false);
     setIsTimerExpired(false);
     setSelectedCard(null); // Clear any selection when round changes
+    // Force re-render to ensure UI is in sync
+    setTimeLeft(Math.floor(GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS / 1000));
   }, [game.currentRound]);
+  
+  // Fallback: Check for stuck game state (both cards played but round not advancing)
+  useEffect(() => {
+    if (game.status === GAME_CONSTANTS.GAME_STATUS.PLAYING && 
+        currentPlayer?.currentCard && 
+        opponent?.currentCard && 
+        !showRoundResult) {
+      
+      // Both cards are played but round hasn't ended - might be stuck
+      const checkInterval = setTimeout(() => {
+        // If still stuck after 1000ms, try to complete the round
+        // Check if rounds array hasn't been updated for this round
+        const roundsArray = Array.isArray(game.rounds) 
+          ? game.rounds 
+          : game.rounds 
+            ? Object.values(game.rounds).filter(r => r != null)
+            : [];
+        const currentRoundExists = roundsArray.length > game.currentRound && roundsArray[game.currentRound] != null;
+        
+        if (currentPlayer?.currentCard && opponent?.currentCard && !showRoundResult && !currentRoundExists) {
+          console.error('Game stuck: Both cards played but round not completing, attempting to resolve...');
+          // Trigger round completion by calling playCard with the already-played card
+          // The playCard function will detect both cards are played and process the round
+          onPlayCard(currentPlayer.currentCard, true);
+        }
+      }, 1000);
+      
+      return () => clearTimeout(checkInterval);
+    }
+  }, [currentPlayer?.currentCard, opponent?.currentCard, game.status, showRoundResult, onPlayCard, game.currentRound, game.rounds]);
 
   // Detect when round ends (both players have played)
   useEffect(() => {
-    if (game.rounds && game.rounds.length > 0) {
-      const lastRound = game.rounds[game.rounds.length - 1];
+    // Convert rounds object to array if needed (Firebase stores as object)
+    const roundsArray = Array.isArray(game.rounds) 
+      ? game.rounds 
+      : game.rounds 
+        ? Object.values(game.rounds).filter(r => r != null)
+        : [];
+    
+    if (roundsArray.length > 0) {
+      const lastRound = roundsArray[roundsArray.length - 1];
       // Check if this is a new round result we haven't shown yet
-      const roundKey = `${game.rounds.length}-${lastRound?.timestamp}`;
+      const roundKey = `${roundsArray.length}-${lastRound?.timestamp}`;
       const hasShownKey = `shown_${roundKey}`;
       
       if (lastRound && !sessionStorage.getItem(hasShownKey)) {
         sessionStorage.setItem(hasShownKey, 'true');
         setLastRoundWinner(lastRound.winner || 'draw');
         setShowRoundResult(true);
-        setModalCountdown(5);
+        setModalCountdown(Math.floor(GAME_CONSTANTS.TIMERS.ROUND_POPUP_DURATION_MS / 1000));
       }
     }
-  }, [game.rounds]);
+    // Use JSON.stringify for stable comparison of rounds object/array
+  }, [JSON.stringify(game.rounds), game.currentRound]);
 
   // Reset timer when round changes
   useEffect(() => {
     if (game.roundTimer) {
-      // Always start at 15 when round changes (timer countdown handled in main interval)
-      setTimeLeft(15);
+      // Always start at play time seconds when round changes (timer countdown handled in main interval)
+      setTimeLeft(Math.floor(GAME_CONSTANTS.TIMERS.ROUND_PLAY_TIME_MS / 1000));
     }
   }, [game.currentRound, game.roundTimer]);
 
@@ -123,11 +173,13 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
           setShowRoundResult(false);
           setLastRoundWinner(null);
           setSelectedCard(null); // Clear any selected card
-          return 5;
+          setHasAutoPlayed(false); // Reset auto-play flag
+          setIsTimerExpired(false); // Reset timer expired flag
+          return Math.floor(GAME_CONSTANTS.TIMERS.ROUND_POPUP_DURATION_MS / 1000);
         }
         return prev - 1;
       });
-    }, 1000);
+    }, GAME_CONSTANTS.TIMERS.COUNTDOWN_INTERVAL_MS);
 
     return () => clearInterval(interval);
   }, [showRoundResult]);
@@ -150,7 +202,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
     <div className="min-h-screen bg-gradient-to-b from-green-900 to-green-800 p-4">
       <div className="max-w-5xl mx-auto flex flex-col h-[calc(100vh-2rem)] relative">
         {/* Exit Button - Hidden when game ends */}
-        {game.status !== 'match_end' && (
+        {game.status !== GAME_CONSTANTS.GAME_STATUS.MATCH_END && (
           <button
             onClick={() => setShowLeaveModal(true)}
             className="absolute top-0 right-0 bg-white hover:bg-gray-100 text-black px-4 py-2 rounded-lg transition-colors font-medium"
@@ -161,7 +213,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
         
         {/* Header */}
         <div className="flex justify-between items-center mb-4 text-white">
-          <div className="text-2xl font-bold">Round {game.currentRound + 1}/9</div>
+          <div className="text-2xl font-bold">Round {game.currentRound + 1}/{GAME_CONSTANTS.TOTAL_ROUNDS}</div>
           <div className="text-center">
             <div className="text-5xl font-bold">
               {showRoundResult ? '---' : `${timeLeft}s`}
@@ -202,7 +254,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                 <div className="text-white text-3xl font-bold">{opponent?.roundsWon || 0}</div>
               </div>
               <div className="w-20 h-28">
-                {opponent?.currentCard ? (
+                {opponent?.currentCard && !showRoundResult ? (
                   timeLeft === 0 || (currentPlayer?.currentCard && opponent?.currentCard) ? (
                     <div className="border-2 border-red-500 rounded-lg">
                       <Card card={opponent.currentCard} noBorder />
@@ -225,7 +277,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                 <div className="text-white text-3xl font-bold">{currentPlayer?.roundsWon || 0}</div>
               </div>
               <div className="w-20 h-28">
-                {currentPlayer?.currentCard ? (
+                {currentPlayer?.currentCard && !showRoundResult ? (
                   timeLeft === 0 || (currentPlayer?.currentCard && opponent?.currentCard) ? (
                     <div className="border-2 border-blue-500 rounded-lg">
                       <Card card={currentPlayer.currentCard} noBorder />
@@ -256,7 +308,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
             </div>
           )}
           <div className="flex justify-center gap-2 flex-wrap">
-            {currentPlayer?.hand.map((card, index) => (
+            {currentPlayer?.hand?.map((card, index) => (
               <Card
                 key={`${card.suit}-${card.rank}-${index}`}
                 card={card}
@@ -264,11 +316,11 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                 disabled={!!currentPlayer.currentCard || isTimerExpired}
                 selected={selectedCard?.suit === card.suit && selectedCard?.rank === card.rank}
               />
-            ))}
+            )) || <div className="text-white">Waiting for cards...</div>}
           </div>
         </div>
 
-        {showRoundResult && game.rounds && game.rounds.length > 0 && (
+        {showRoundResult && game.rounds && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
             <div className="bg-white rounded-xl p-12 shadow-2xl">
               {/* Win/Lose Message */}
@@ -291,7 +343,12 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                   )}
                   <div className="border-2 border-blue-500 rounded-lg">
                     {(() => {
-                      const lastRound = game.rounds[game.rounds.length - 1];
+                      const roundsArray = Array.isArray(game.rounds) 
+                        ? game.rounds 
+                        : game.rounds 
+                          ? Object.values(game.rounds).filter(r => r != null)
+                          : [];
+                      const lastRound = roundsArray[roundsArray.length - 1];
                       const playerCard = playerId === Object.keys(game.players)[0] 
                         ? lastRound?.player1Card 
                         : lastRound?.player2Card;
@@ -310,7 +367,12 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                   )}
                   <div className="border-2 border-red-500 rounded-lg">
                     {(() => {
-                      const lastRound = game.rounds[game.rounds.length - 1];
+                      const roundsArray = Array.isArray(game.rounds) 
+                        ? game.rounds 
+                        : game.rounds 
+                          ? Object.values(game.rounds).filter(r => r != null)
+                          : [];
+                      const lastRound = roundsArray[roundsArray.length - 1];
                       const opponentCard = playerId === Object.keys(game.players)[0] 
                         ? lastRound?.player2Card 
                         : lastRound?.player1Card;
@@ -356,7 +418,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
           </div>
         )}
 
-        {game.status === 'match_end' && (
+        {game.status === GAME_CONSTANTS.GAME_STATUS.MATCH_END && (
           <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
             <div className="bg-white rounded-xl p-12 shadow-2xl max-w-lg w-full mx-4">
               {/* Winner/Loser Display */}
@@ -401,7 +463,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                 </div>
 
                 <div className="text-center text-sm text-gray-500 mt-4">
-                  <p>Total Rounds Played: {game.rounds?.length || 0}</p>
+                  <p>Total Rounds Played: {Array.isArray(game.rounds) ? game.rounds.length : Object.values(game.rounds || {}).filter(r => r != null).length}</p>
                   <p className="mt-1">Trump Suit: 
                     {(() => {
                       const iconProps = {
