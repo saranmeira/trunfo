@@ -3,9 +3,11 @@
     "games": {
       "$gameId": {
         ".read": true,
+        ".write": true,
         
         "players": {
           "$playerId": {
+            ".write": true,
             "name": {
               ".write": true
             },
@@ -14,38 +16,39 @@
             },
             "currentCard": {
               ".write": true,
-              ".validate": "newData.hasChildren(['suit', 'rank', 'value'])"
+              ".validate": "newData.hasChildren(['suit', 'rank', 'value']) || newData.val() === null"
             },
             "hand": {
-              ".write": false
+              ".write": true
             },
             "cardsPlayed": {
-              ".write": false
+              ".write": true
             },
             "roundsWon": {
-              ".write": false
+              ".write": true
             }
           }
         },
         
         "status": {
-          ".write": "newData.val() === 'waiting' || newData.val() === 'ready'"
+          ".write": true,
+          ".validate": "newData.val() === 'waiting' || newData.val() === 'ready' || newData.val() === 'playing' || newData.val() === 'match_end'"
         },
         
         "trumpSuit": {
-          ".write": false
+          ".write": true
         },
         
         "currentRound": {
-          ".write": false
+          ".write": true
         },
         
         "roundTimer": {
-          ".write": false
+          ".write": true
         },
         
         "rounds": {
-          ".write": false
+          ".write": true
         },
         
         "bet": {
