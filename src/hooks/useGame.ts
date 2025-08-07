@@ -146,7 +146,7 @@ export function useGame(gameId: string | null, playerId: string) {
     }
   };
 
-  const playCard = async (card: Card, isAutoPlay: boolean = false): Promise<void> => {
+  const playCard = async (card: Card, _isAutoPlay: boolean = false): Promise<void> => {
     if (!gameId || !game) return;
 
     try {

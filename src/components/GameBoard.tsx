@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { Game, Card as CardType } from '../types/game';
+import type { Game, Card as CardType, Round } from '../types/game';
 import { Card } from './Card';
 import { Crown, Heart, Diamond, Club, Spade, Trophy, Home } from 'lucide-react';
 import { GAME_CONSTANTS } from '../constants/game';
@@ -140,7 +140,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
         : [];
     
     if (roundsArray.length > 0) {
-      const lastRound = roundsArray[roundsArray.length - 1];
+      const lastRound = roundsArray[roundsArray.length - 1] as Round | undefined;
       // Check if this is a new round result we haven't shown yet
       const roundKey = `${roundsArray.length}-${lastRound?.timestamp}`;
       const hasShownKey = `shown_${roundKey}`;
@@ -348,7 +348,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                         : game.rounds 
                           ? Object.values(game.rounds).filter(r => r != null)
                           : [];
-                      const lastRound = roundsArray[roundsArray.length - 1];
+                      const lastRound = roundsArray[roundsArray.length - 1] as Round | undefined;
                       const playerCard = playerId === Object.keys(game.players)[0] 
                         ? lastRound?.player1Card 
                         : lastRound?.player2Card;
@@ -372,7 +372,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({ game, playerId, onPlayCard
                         : game.rounds 
                           ? Object.values(game.rounds).filter(r => r != null)
                           : [];
-                      const lastRound = roundsArray[roundsArray.length - 1];
+                      const lastRound = roundsArray[roundsArray.length - 1] as Round | undefined;
                       const opponentCard = playerId === Object.keys(game.players)[0] 
                         ? lastRound?.player2Card 
                         : lastRound?.player1Card;
