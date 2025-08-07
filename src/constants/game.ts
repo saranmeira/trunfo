@@ -18,7 +18,7 @@ export const GAME_CONSTANTS = {
   },
   
   TIMERS: {
-    ROUND_PLAY_TIME_MS: 5000,  // 15 seconds to play
+    ROUND_PLAY_TIME_MS: 10000,
     ROUND_POPUP_DURATION_MS: 3000,  // 3 seconds for popup
     AUTO_PLAY_DELAY_MIN_MS: 100,
     AUTO_PLAY_DELAY_MAX_MS: 200,
