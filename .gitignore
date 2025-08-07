@@ -16,6 +16,7 @@ build/
 
 # Firebase
 .firebase/
+.firebaserc
 *.cache
 firebase-debug.log
 firestore-debug.log
